@@ -42,7 +42,7 @@ stages:
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
   - deployment: VMDeploy
-    displayName: NAME
+    displayName: Install selenium
     environment:
       name:  dev-vm
       resourceType: VirtualMachine
