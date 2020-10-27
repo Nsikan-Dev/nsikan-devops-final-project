@@ -46,7 +46,7 @@ stages:
     environment:
       name:  dev-vm
       resourceType: VirtualMachine
-      tags: ''
+      tags: ""
     strategy:
       runOnce:
         deploy:
