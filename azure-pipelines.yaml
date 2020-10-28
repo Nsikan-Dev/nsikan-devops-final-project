@@ -23,7 +23,27 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
       displayName: 'Upload Package'
-      artifact: drop-fakerestapi
+      artifact: drop-fakerestapi 
+  - job: Build
+    pool:
+      name: Hosted Ubuntu 1604
+    steps:
+    - task: CmdLine@2
+      displayName: Install Newman
+      inputs:
+        script: 'sudo npm install -g newman'
+        workingDirectory: $(System.DefaultWorkingDirectory)
+    - task: CmdLine@2
+      displayName: Run Regression Tests
+      continueOnError: true
+      inputs:
+        script: 'newman run StarterAPIs.json --reporter-junit-export junitReport.xml'
+        workingDirectory: $(System.DefaultWorkingDirectory)
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'junitReport.xml' 
+    
 - stage:
   jobs:
   - deployment: FakeRestAPI
@@ -41,26 +61,26 @@ stages:
               appName: 'dev-AppService-proj3'
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
-  - deployment: VMDeploy
-    displayName: Install selenium
-    environment:
-      name:  dev-vm
-      resourceType: VirtualMachine
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                #! /bin/bash
+  # - deployment: VMDeploy
+  #   displayName: Install selenium
+  #   environment:
+  #     name:  dev-vm
+  #     resourceType: VirtualMachine
+  #   strategy:
+  #     runOnce:
+  #       deploy:
+  #         steps:
+  #         - task: Bash@3
+  #           inputs:
+  #             targetType: 'inline'
+  #             script: |
+  #               #! /bin/bash
                 
-                sudo apt-get upgrade -y
-                sudo apt-get install python3-pip -y
-                sudo apt-get install unzip -y
-                sudo apt-get install -y chromium-browser
-                pip3 install selenium
+  #               sudo apt-get upgrade -y
+  #               sudo apt-get install python3-pip -y
+  #               sudo apt-get install unzip -y
+  #               sudo apt-get install -y chromium-browser
+  #               pip3 install selenium
   #               export PATH=$PATH:some/path
 
 
