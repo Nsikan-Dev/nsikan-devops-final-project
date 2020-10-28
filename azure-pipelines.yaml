@@ -33,7 +33,7 @@ stages:
       displayName: Run Regression Tests
       continueOnError: true
       inputs:
-        script: 'newman run StarterAPIs.json --reporter-junit-export $(System.DefaultWorkingDirectory)/junitReport.xml'
+        script: 'newman run StarterAPIs.json --reporters cli,junit --reporter-junit-export $(System.DefaultWorkingDirectory)/junitReport.xml'
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishTestResults@2
       inputs:
