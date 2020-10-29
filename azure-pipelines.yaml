@@ -78,7 +78,7 @@ stages:
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
       
-  - job: Run Selenium
+  - job: Selenium
     pool:
       name: Hosted Ubuntu 1604
     steps:
