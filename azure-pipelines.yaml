@@ -81,11 +81,11 @@ stages:
             displayName: Login
             inputs:
               script: 'python3 login.py'
-              # workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
+              workingDirectory: $(Build.SourcesDirectory)/automatedtesting/selenium
           - task: CmdLine@2
             displayName: Add and Remove Items to/from Cart
             inputs:
               script: 'python3 addProducts.py'
-              # workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
+              workingDirectory: $(Build.SourcesDirectory)/automatedtesting/selenium
 
 
