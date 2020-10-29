@@ -15,4 +15,5 @@ def login (user, password):
     driver.get('https://www.saucedemo.com/')
 
 login('standard_user', 'secret_sauce')
+print ('User has logged in.')
 
