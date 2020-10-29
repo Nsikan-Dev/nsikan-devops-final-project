@@ -79,8 +79,8 @@ stages:
                 pip3 install selenium
       
   - job: Run Selenium
-    environment:
-      name:  dev-vm
+    pool:
+      name: Hosted Ubuntu 1604
     steps:
       - task: CmdLine@2
         displayName: Login
