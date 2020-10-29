@@ -77,18 +77,15 @@ stages:
                 sudo apt-get install unzip -y
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
-
-                python3 automatedtesting/selenium/login.py
-                python3 automatedtesting/selenium/addProducts.py
-          # - task: CmdLine@2
-          #   displayName: Login
-          #   inputs:
-          #     script: 'python3 login.py'
-          #     workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
-          # - task: CmdLine@2
-          #   displayName: Add and Remove Items to/from Cart
-          #   inputs:
-          #     script: 'python3 addProducts.py'
-          #     workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
+          - task: CmdLine@2
+            displayName: Login
+            inputs:
+              script: 'python3 login.py'
+              # workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
+          - task: CmdLine@2
+            displayName: Add and Remove Items to/from Cart
+            inputs:
+              script: 'python3 addProducts.py'
+              # workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
 
 
