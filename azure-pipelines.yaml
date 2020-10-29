@@ -61,7 +61,7 @@ stages:
     displayName: Install selenium
     environment:
       name:  dev-vm
-      resourceType: VirtualMachine
+      # resourceType: VirtualMachine
     strategy:
       runOnce:
         deploy:
