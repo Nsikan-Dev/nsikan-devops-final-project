@@ -43,6 +43,9 @@ stages:
       inputs:
         contents: 'automatedtesting/selenium/*'
         targetFolder: $(Build.ArtifactStagingDirectory)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: $(Build.ArtifactStagingDirectory)
     
 - stage:
   jobs:
