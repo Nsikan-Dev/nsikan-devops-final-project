@@ -105,11 +105,13 @@ stages:
           #     artifactName: MyBuildOutputs
           - task: PythonScript@0
             displayName: Login
-            inputs:
-              script: python3 $(Pipeline.Workspace)/home/vsts/work/1/drop/automatedtesting/selenium/login.py
+            inputs:            
+              workingDirectory: $(Pipeline.Workspace)
+              script: python3 drop/automatedtesting/selenium/login.py
           - task: PythonScript@0
             displayName: Add and Remove Items to/from cart
-            inputs:
-              script: python3 $(Pipeline.Workspace)/home/vsts/work/1/drop/automatedtesting/selenium/addProducts.py
+            inputs:            
+              workingDirectory: $(Pipeline.Workspace)
+              script: python3 drop/automatedtesting/selenium/addProducts.py
 
 
