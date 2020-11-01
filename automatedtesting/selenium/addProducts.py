@@ -5,7 +5,10 @@ import time
 # Start the browser and navigate to https://www.saucedemo.com/inventory.html.
 print('Navigating to https://www.saucedemo.com/inventory.html')
 print('Adding all items to cart')
-driver = webdriver.Chrome()
+options = ChromeOptions()
+options.add_argument("--headless") 
+driver = webdriver.Chrome(options=options)
+# driver = webdriver.Chrome()
 driver.get('https://www.saucedemo.com/inventory.html')
 driver.find_element_by_css_selector("button[class='btn_primary btn_inventory']").click()
 print('Adding backpack to cart')
