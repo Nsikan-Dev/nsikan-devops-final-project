@@ -78,8 +78,12 @@ stages:
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
 
-                echo "Done"
-                ls 
+                echo "System.DefaultWorkingDirectory"
+                ls $(System.DefaultWorkingDirectory)
+                echo "Agent.BuildDirectory"
+                ls $(Agent.BuildDirectory)
+                echo "Pipeline.Workspace"
+                ls $(Pipeline.Workspace)
 
           # - task: CmdLine@2
           #   displayName: Login
