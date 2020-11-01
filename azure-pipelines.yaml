@@ -106,10 +106,10 @@ stages:
           - task: PythonScript@0
             displayName: Login
             inputs:
-              script: python3 $(Build.ArtifactStagingDirectory)/login.py
+              script: python3 $(Build.ArtifactStagingDirectory)/automatedtesting/selenium/login.py
           - task: PythonScript@0
             displayName: Add and Remove Items to/from cart
             inputs:
-              script: python3 $(Build.ArtifactStagingDirectory)/addProducts.py
+              script: python3 $(Build.ArtifactStagingDirectory)/automatedtesting/selenium/addProducts.py
 
 
