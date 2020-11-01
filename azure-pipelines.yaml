@@ -82,8 +82,8 @@ stages:
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
 
-                echo "System.DefaultWorkingDirectory"
-                ls $(System.DefaultWorkingDirectory)
+                echo "Build.ArtifactStagingDirectory"
+                ls $(Build.ArtifactStagingDirectory)
                 echo "Agent.BuildDirectory"
                 ls $(Agent.BuildDirectory)/*
                 echo "Pipeline.Workspace"
