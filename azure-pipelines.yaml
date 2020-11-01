@@ -84,6 +84,8 @@ stages:
                 ls $(Agent.BuildDirectory)/*
                 echo "Pipeline.Workspace"
                 ls $(Pipeline.Workspace)/*
+                echo "Build.SourcesDirectory"
+                ls $(Build.SourcesDirectory)
 
           
           - task: CopyFiles@2
