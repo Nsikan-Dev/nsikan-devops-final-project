@@ -81,19 +81,16 @@ stages:
                 echo "System.DefaultWorkingDirectory"
                 ls $(System.DefaultWorkingDirectory)
                 echo "Agent.BuildDirectory"
-                ls $(Agent.BuildDirectory)
+                ls $(Agent.BuildDirectory)/*
                 echo "Pipeline.Workspace"
-                ls $(Pipeline.Workspace)
-
-          # - task: CmdLine@2
-          #   displayName: Login
-          #   inputs:
-          #     script: 'python3 login.py'
-          #     workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
-          # - task: CmdLine@2
-          #   displayName: Add and Remove Items to/from cart
-          #   inputs:
-          #     script: 'python3 addProducts.py'
-          #     workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/selenium
+                ls $(Pipeline.Workspace)/*
+          - task: PythonScript@0
+            displayName: Login
+            inputs:
+              script: 'python3 automatedtesting/selenium/login.py'
+          - task: PythonScript@0
+            displayName: Add and Remove Items to/from cart
+            inputs:
+              script: 'python3 automatedtesting/selenium/addProducts.py'
 
 
