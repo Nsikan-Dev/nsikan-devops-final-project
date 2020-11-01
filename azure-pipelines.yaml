@@ -84,13 +84,23 @@ stages:
                 ls $(Agent.BuildDirectory)/*
                 echo "Pipeline.Workspace"
                 ls $(Pipeline.Workspace)/*
+
+          
+          - task: CopyFiles@2
+            inputs:
+              contents: 'automatedtesting/selenium/*'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          # - task: PublishBuildArtifacts@1
+          #   inputs:
+          #     pathToPublish: $(Build.ArtifactStagingDirectory)
+          #     artifactName: MyBuildOutputs
           - task: PythonScript@0
             displayName: Login
             inputs:
-              script: python3 automatedtesting/selenium/login.py
+              script: python3 login.py
           - task: PythonScript@0
             displayName: Add and Remove Items to/from cart
             inputs:
-              script: python3 automatedtesting/selenium/addProducts.py
+              script: python3 addProducts.py
 
 
