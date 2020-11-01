@@ -107,13 +107,13 @@ stages:
             displayName: Login
             inputs:  
               scriptSource: 'filePath'          
-              workingDirectory: $(Pipeline.Workspace)
-              scriptPath: automatedtesting/selenium/login.py
+              workingDirectory: $(Build.ArtifactStagingDirectory)
+              scriptPath: drop/automatedtesting/selenium/login.py
           - task: PythonScript@0
             displayName: Add and Remove Items to/from cart
             inputs:        
               scriptSource: 'filePath'     
-              workingDirectory: $(Pipeline.Workspace)
-              scriptPath: automatedtesting/selenium/addProducts.py
+              workingDirectory: $(Build.ArtifactStagingDirectory)
+              scriptPath: drop/automatedtesting/selenium/addProducts.py
 
 
