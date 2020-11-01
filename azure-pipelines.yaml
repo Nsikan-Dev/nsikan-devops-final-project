@@ -78,7 +78,8 @@ stages:
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
 
-                ls
+                echo "Done"
+                ls 
 
           # - task: CmdLine@2
           #   displayName: Login
