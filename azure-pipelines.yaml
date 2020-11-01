@@ -86,6 +86,7 @@ stages:
                 pip3 install selenium
 
                 python3 /home/vsts/work/1/drop/automatedtesting/selenium/login.py
+                python3 /home/vsts/work/1/drop/automatedtesting/selenium/addProducts.py
 
           # - task: PythonScript@0
           #   displayName: Login
