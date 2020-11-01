@@ -39,6 +39,10 @@ stages:
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: '$(System.DefaultWorkingDirectory)/junitReport.xml' 
+    - task: CopyFiles@2
+      inputs:
+        contents: 'automatedtesting/selenium/*'
+        targetFolder: $(Build.ArtifactStagingDirectory)
     
 - stage:
   jobs:
@@ -88,10 +92,10 @@ stages:
                 ls $(Build.SourcesDirectory)
 
           
-          - task: CopyFiles@2
-            inputs:
-              contents: 'automatedtesting/selenium/*'
-              targetFolder: $(Build.ArtifactStagingDirectory)
+          # - task: CopyFiles@2
+          #   inputs:
+          #     contents: 'automatedtesting/selenium/*'
+          #     targetFolder: $(Build.ArtifactStagingDirectory)
           # - task: PublishBuildArtifacts@1
           #   inputs:
           #     pathToPublish: $(Build.ArtifactStagingDirectory)
