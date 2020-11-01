@@ -67,9 +67,9 @@ stages:
         deploy:
           steps:
           - task: Bash@3
-            workingDirectory: $(System.DefaultWorkingDirectory)
             inputs:
               targetType: 'inline'
+              workingDirectory: $(System.DefaultWorkingDirectory)
               script: |
                 #! /bin/bash
                 
