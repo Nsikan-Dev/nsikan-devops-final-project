@@ -85,6 +85,8 @@ stages:
                 sudo apt-get install -y chromium-browser
                 pip3 install selenium
 
+                echo "System.DefaultWorkingDirectory"
+                ls $(System.DefaultWorkingDirectory)
                 echo "Build.ArtifactStagingDirectory"
                 ls $(Build.ArtifactStagingDirectory)
                 echo "Agent.BuildDirectory"
@@ -93,27 +95,17 @@ stages:
                 ls $(Pipeline.Workspace)/*
                 echo "Build.SourcesDirectory"
                 ls $(Build.SourcesDirectory)
-
-          
-          # - task: CopyFiles@2
-          #   inputs:
-          #     contents: 'automatedtesting/selenium/*'
-          #     targetFolder: $(Build.ArtifactStagingDirectory)
-          # - task: PublishBuildArtifacts@1
-          #   inputs:
-          #     pathToPublish: $(Build.ArtifactStagingDirectory)
-          #     artifactName: MyBuildOutputs
           - task: PythonScript@0
             displayName: Login
             inputs:  
               scriptSource: 'filePath'          
-              workingDirectory: $(Build.ArtifactStagingDirectory)
-              scriptPath: drop/automatedtesting/selenium/login.py
+              #  workingDirectory: $(Build.ArtifactStagingDirectory)
+              scriptPath: /home/vsts/work/1/drop/automatedtesting/selenium/login.py
           - task: PythonScript@0
             displayName: Add and Remove Items to/from cart
             inputs:        
               scriptSource: 'filePath'     
-              workingDirectory: $(Build.ArtifactStagingDirectory)
-              scriptPath: drop/automatedtesting/selenium/addProducts.py
+              # workingDirectory: $(Build.ArtifactStagingDirectory)
+              scriptPath: /home/vsts/work/1/drop/automatedtesting/selenium/addProducts.py
 
 
