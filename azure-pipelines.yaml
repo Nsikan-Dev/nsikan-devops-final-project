@@ -83,7 +83,7 @@ stages:
                 sudo apt-get install python3-pip -y
                 sudo apt-get install unzip -y
                 sudo apt-get install -y chromium-browser
-                pip3 install selenium
+                sudo pip3 install selenium
 
                 python /home/vsts/work/1/drop/automatedtesting/selenium/login.py
 
