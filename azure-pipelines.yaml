@@ -108,12 +108,12 @@ stages:
             inputs:  
               scriptSource: 'filePath'          
               workingDirectory: $(Pipeline.Workspace)
-              script: python3 drop/automatedtesting/selenium/login.py
+              scriptPath: automatedtesting/selenium/login.py
           - task: PythonScript@0
             displayName: Add and Remove Items to/from cart
             inputs:        
-              scriptSource: 'inline'     
+              scriptSource: 'filePath'     
               workingDirectory: $(Pipeline.Workspace)
-              script: python3 automatedtesting/selenium/addProducts.py
+              scriptPath: automatedtesting/selenium/addProducts.py
 
 
