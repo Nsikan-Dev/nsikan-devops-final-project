@@ -87,18 +87,6 @@ stages:
 
                 python3 /home/vsts/work/1/drop/automatedtesting/selenium/login.py
                 python3 /home/vsts/work/1/drop/automatedtesting/selenium/addProducts.py
-
-          # - task: PythonScript@0
-          #   displayName: Login
-          #   inputs:  
-          #     scriptSource: 'filePath'          
-          #     #  workingDirectory: $(Build.ArtifactStagingDirectory)
-          #     scriptPath: /home/vsts/work/1/drop/automatedtesting/selenium/login.py
-          # - task: PythonScript@0
-          #   displayName: Add and Remove Items to/from cart
-          #   inputs:        
-          #     scriptSource: 'filePath'     
-          #     # workingDirectory: $(Build.ArtifactStagingDirectory)
-          #     scriptPath: /home/vsts/work/1/drop/automatedtesting/selenium/addProducts.py
+                
 
 
