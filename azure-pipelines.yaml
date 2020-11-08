@@ -87,18 +87,33 @@ stages:
 
                 python3 /home/vsts/work/1/drop/automatedtesting/selenium/login.py
                 python3 /home/vsts/work/1/drop/automatedtesting/selenium/addProducts.py          
-          - task: Bash@3
-            displayName: Execute JMeter tests
-            inputs:
-              targetType: filePath
-              filePath: 'jmeter/test.sh'
-              arguments: '$PWD Starter.jmx $(host)'
-              workingDirectory: $(Build.SourcesDirectory)/automatedtesting/jmeter
-              failOnStderr: true
-          - task: PublishPipelineArtifact@1
-            displayName: Publish JMeter Report
-            inputs:
-              targetPath: automatedtesting/jmeter/report
-              artifact: jmeter
+          # - task: Bash@3
+          #   displayName: Execute JMeter tests
+          #   inputs:
+          #     targetType: filePath
+          #     filePath: 'jmeter/test.sh'
+          #     arguments: '$PWD Starter.jmx $(host)'
+          #     workingDirectory: $(Build.SourcesDirectory)/automatedtesting/jmeter
+          #     failOnStderr: true
+          # - task: PublishPipelineArtifact@1
+          #   displayName: Publish JMeter Report
+          #   inputs:
+          #     targetPath: automatedtesting/jmeter/report
+          #     artifact: jmeter
+
+  - job: Jmeter
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: JMeterInstaller@0
+      displayName: 'Install JMeter 5.2.1'
+      inputs:
+        jmeterVersion: '5.2.1'
+    - task: Bash@3
+      displayName: 'Run Jmeter test'
+      inputs:
+        targetType: 'inline'
+        script: |
+          jmeter -n -t automatedtesting/jmeter/Starter.jmx -Jresdir=automatedtesting/jmeter/id.csv
 
 
