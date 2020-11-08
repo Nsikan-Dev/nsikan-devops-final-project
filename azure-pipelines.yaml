@@ -93,12 +93,12 @@ stages:
               targetType: filePath
               filePath: 'automatedtesting/jmeter/test.sh'
               arguments: '$PWD automatedtesting/jmeter/Starter.jmx $(host)'
-              workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/jmeter
+              # workingDirectory: $(System.DefaultWorkingDirectory)/automatedtesting/jmeter
               failOnStderr: true
           - task: PublishPipelineArtifact@1
             displayName: Publish JMeter Report
             inputs:
-              targetPath: $(System.DefaultWorkingDirectory)/automatedtesting/jmeter/report
+              targetPath: automatedtesting/jmeter/report
               artifact: jmeter
 
 
