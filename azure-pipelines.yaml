@@ -33,12 +33,13 @@ stages:
       displayName: Run Regression Tests
       continueOnError: true
       inputs:
-        script: 'newman run StarterAPIs.json --reporters cli,junit --reporter-junit-export $(System.DefaultWorkingDirectory)/junitReport.xml'
+        # script: 'newman run StarterAPIs.json --reporters cli,junit --reporter-junit-export $(System.DefaultWorkingDirectory)/junitReport.xml'
+        script: 'newman run automatedtesting/postman/Regression.postman_collection.json -e automatedtesting/postman/Environment.postman_environment.json --reporters cli,junit --reporter-junit-export $(System.DefaultWorkingDirectory)/junitRegressionReport.xml'
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: '$(System.DefaultWorkingDirectory)/junitReport.xml' 
+        testResultsFiles: '$(System.DefaultWorkingDirectory)/junitRegressionReport.xml' 
     - task: CopyFiles@2
       inputs:
         contents: 'automatedtesting/selenium/*'

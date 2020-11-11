@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "9dd24669-cc09-4469-baaa-de0a7083b3d9",
+		"name": "Final Project Validation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1b487f13-9b43-48d9-b039-1e2f76254592",
+						"exec": [
+							"pm.test(\"Check User Name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.UserName).to.eql(\"User 1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check User Password\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Password).to.eql(\"Password1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/Users?id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"Users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a7cd268-4079-447a-8f7a-2e27e4a3354d",
+						"exec": [
+							"pm.test(\"Validate Author First Name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.FirstName).to.eql(\"First Name 1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Author Last name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.LastName).to.eql(\"Last Name 1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/Authors?id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"Authors"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "668f1a86-d9f6-4015-9cc6-2ed34f013ee8",
+						"exec": [
+							"pm.test(\"Validate Book Title\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Title).to.eql(\"Book 1\");\r",
+							"});\r",
+							"pm.test(\"Find word in description\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"aliquam\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/Books?id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"Books"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Activity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24fcd348-5166-453a-9d3f-f9b1d48c8963",
+						"exec": [
+							"pm.test(\"Validate Activity Title\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Title).to.eql(\"Activity 1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Due Date\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Completed).to.eql(false);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/Activities?id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"Activities"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
